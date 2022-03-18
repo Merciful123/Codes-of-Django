@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>User Registration</title>
+ <style>
+ .errorlist{
+  list-style-type:none;
+  color:red;
+  font-size:10px;
+  margin:0;
+  padding:0;
+ }
+ </style>
+</head>
+<body>
+ <h3>Example 1</h3>
+  <form action="" method="POST" novalidate> {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+  </form>
+
+  <h3>Example 2</h3>
+  <form action="" method="POST" novalidate> {% csrf_token %}
+    {{ form.non_field_errors }}
+      {% for field in form %}
+        <div>
+          {{ field.label_tag }} {{ field }} <span>{{field.errors|striptags}}</span>
+        </div>
+      {% endfor %}
+    <input type="submit" value="Submit">
+  </form>
+
+  <h3>Example 3</h3>
+  <form action="" method="POST" novalidate> {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+      <div>
+        {{ field.label_tag }} {{ field }} 
+        {% for error in field.errors %}
+          <span class='errorlist'>{{error}}</span>
+        {% endfor %} 
+      </div>
+    {% endfor %}
+  <input type="submit" value="Submit">
+ </form>
+</body>
+</html>

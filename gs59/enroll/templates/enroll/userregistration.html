@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+  .alert-info {
+   color: blue;
+  }
+  .alert-success{
+   color:green;
+  }
+  .alert-warning{
+   color:orange;
+  }
+  .alert-danger{
+   color:red;
+  }
+ </style>
+</head>
+<body>
+ <form action="" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="Submit">
+ </form>
+ {% if messages %}
+  {% for message in messages %}
+   <p {% if message.tags %} class="alert-{{message.tags}}" {% endif %}>{{message}}</p>
+  {% endfor %}
+ {% endif %}
+</body>
+</html>

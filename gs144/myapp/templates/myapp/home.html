@@ -1,0 +1,19 @@
+{% load myfilters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+</head>
+<body>
+ <h1>Home Page</h1>
+ <h1>
+ {{data}} <br>
+ {{data|upper}} <br>
+ {{data|truncatechars:5}} <br>
+
+ {{data|iamToweare:'I am'}}
+ </h1>
+</body>
+</html>

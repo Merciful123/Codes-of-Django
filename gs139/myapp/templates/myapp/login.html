@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+ .myuser{
+  color:red;
+  background-color:yellow;
+ }
+ .mypass{
+  color:white;
+  background-color:blue;
+ }
+ </style>
+</head>
+<body>
+  {% comment %} <form action="" method="post" novalidate>
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="Login">
+ </form> {% endcomment %}
+
+<h3>Login Page</h3> 
+ <form action="" method="post" novalidate>
+   {% csrf_token %}
+   {% for fm in form %}
+    <div>
+    {{fm.label_tag}} {{fm}} <small>{{fm.errors|striptags}}</small>
+    </div>
+   {% endfor %}
+   <input type="submit" value="Login">
+   {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+     <p>{{error}}</p>
+    {% endfor %}
+   {% endif %}
+  </form>
+
+</body>
+</html>
